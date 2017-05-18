@@ -5,7 +5,7 @@ var _ = require('./utils.js');
 
 var fileMgr = {};
 
-fileMgr.getAllFiles = function(root) {
+fileMgr.getAllFiles = function(root, dir) {
   var res = [],
       files = fs.readdirSync(root);
 
@@ -14,9 +14,9 @@ fileMgr.getAllFiles = function(root) {
           stat = fs.lstatSync(pathname);
 
       if (!stat.isDirectory()) {
-          res.push(new File(pathname));
+          res.push(new File(pathname, dir));
       } else {
-          res = res.concat(fileMgr.getAllFiles(pathname));
+          res = res.concat(fileMgr.getAllFiles(pathname, dir));
       }
   });
   return res;

@@ -3,11 +3,12 @@ var pth = require('path');
 var fs = require('fs');
 
 var cwd = process.cwd();
+var projectPath = _getProjectName();
 
-function File(path) {
+function File(path, dir) {
   this.realpath = path;
   this.subpath = path.substring(cwd.length);
-  this.releasePath = '';
+  this.releasePath = this.subpath.replace(dir, projectPath);
   this._isImage = true;
   this._isText = false;
 

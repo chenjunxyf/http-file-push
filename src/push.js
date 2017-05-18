@@ -55,7 +55,7 @@ module.exports = function(options, files, callback) {
     steps.push(function(next) {
       var _upload = arguments.callee;
 
-      upload(receiver, to, data, file.subpath, file.getContent(), file, function(error) {
+      upload(receiver, to, data, file.releasePath, file.getContent(), file, function(error) {
         if (error) {
           if (options.retry && !--reTryCount) {
             throw new Error(error.errmsg || error);

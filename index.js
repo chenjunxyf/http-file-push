@@ -20,7 +20,7 @@ module.exports = function(deploy, dir) {
     return;
   }
 
-  var files = fileMrg.getAllFiles(dirPath);
+  var files = fileMrg.getAllFiles(dirPath, dir);
   filepush(deploy, files, function() {
     console.log('\n 文件传输成功 \n'.green);
   });
